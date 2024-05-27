@@ -16,6 +16,7 @@
             break;
         case 'clean_results':
             require('ctrl/ctrl_cleaner.php');
+            results_cleaner_ctrl();
             break;
         default:
             require('vues/404.php');
