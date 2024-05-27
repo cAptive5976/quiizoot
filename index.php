@@ -14,10 +14,12 @@
         case 'quiz':
             require('vues/quiz.php');
             break;
+        case 'clean_results':
+            require('ctrl/ctrl_cleaner.php');
+            break;
         default:
             require('vues/404.php');
             break;
-
     }
 
     exit;
