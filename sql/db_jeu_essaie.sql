@@ -85,3 +85,25 @@ INSERT INTO question (enonce, reponse_id, partie_id) VALUES
 ('Quelle est la distance focale d\'une lentille divergente ?', 130, 1);
 
 
+INSERT INTO score (temps, score) VALUES
+(20, 0),
+(19, 50),
+(18, 100),
+(17, 150),
+(16, 200),
+(15, 250),
+(14, 300),
+(13, 350),
+(12, 400),
+(11, 450),
+(10, 500),
+(9, 550),
+(8, 600),
+(7, 650),
+(6, 700),
+(5, 750),
+(4, 800),
+(3, 850),
+(2, 900),
+(1, 950),
+(0, 1000);
