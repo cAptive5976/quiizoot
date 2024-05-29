@@ -17,7 +17,7 @@ ini_set('display_errors', 1);
             break;
         case 'quiz':
             require('ctrl/ctrl_quiz.php');
-			ctrl_quiz();
+	    ctrl_quiz();
             break;
         case 'clean_results':
             require('ctrl/ctrl_cleaner.php');
