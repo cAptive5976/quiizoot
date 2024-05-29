@@ -16,7 +16,8 @@ ini_set('display_errors', 1);
             require('vues/console.php');
             break;
         case 'quiz':
-            require('vues/quiz.php');
+            require('ctrl/ctrl_quiz.php');
+			ctrl_quiz();
             break;
         case 'clean_results':
             require('ctrl/ctrl_cleaner.php');
