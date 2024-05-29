@@ -18,6 +18,12 @@
             require('ctrl/ctrl_cleaner.php');
             results_cleaner_ctrl();
             break;
+        case 'login':
+            require('ctrl/auth_ctrl.php');
+            break;
+        case 'menu_admin':
+                require('ctrl/menu_admin_ctrl.php');
+                break;
         default:
             require('vues/404.php');
             break;
