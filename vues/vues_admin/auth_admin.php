@@ -2,16 +2,12 @@
 <?php
 include('blocs/header.php');
   
+echo '<h1> Connexion administrateur</h1>';
+echo '<p><form action="index.php?route=login_user" method="post">';
+echo '<label for="nom">Nom :</label>';
+echo '<input type="text"  name="nom" required><br><br>';
+echo '<label for="prenom">Prénom :</label>';
+echo '<input type="text" name="prenom" required><br><br>';
+echo '<button type="submit">Connexion</button>';
+echo '</form></p>';
 
-    ?>
-
-    <h1>Connexion (Admin)</h1>
-    <form action="login.php" method="post">
-        <label for="username">Nom d'utilisateur:</label>
-        <input type="text" id="username" name="username" required><br><br>
-        <label for="password">Mot de passe:</label>
-        <input type="password" id="password" name="password" required><br><br>
-        <a href=""><button type="submit">Se connecter</button></a>
-    </form>
-</body>
-</html>
