@@ -24,7 +24,15 @@ ini_set('display_errors', 1);
             break;
         case 'login':
             require('ctrl/ctrl_auth.php');
+            login();
             break;
+        case 'login_admin':
+            require('ctrl/ctrl_auth.php');
+            login_admin();
+            break;
+        case 'login_user':
+            require('ctrl/ctrl_auth.php');
+            login_user();    
         case 'menu_admin':
             require('ctrl/ctrl_menu_admin.php');
             break;
