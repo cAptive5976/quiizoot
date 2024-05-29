@@ -1,10 +1,10 @@
 <?php
     $route = null;
     if (isset($_GET['route'])) {
-        $route = $_GET['route'];
+        $rte = $_GET['route'];
     }
 
-    switch ($route) {
+    switch ($rte) {
         case null:
             require('vues/accueil.php');
             break;
