@@ -6,5 +6,3 @@ function connection() {
     $connex = new PDO('mysql:host=' . HOST . ';dbname=' . DB,USER , PASSWORD);
     return $connex;
 }
-
-
