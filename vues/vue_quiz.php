@@ -4,11 +4,11 @@ function vue_reponses($id_question, $reponses, $id_utilisateur) {
     
    echo '<h2>QUIZZ</h2>';
     
-   echo '<h1>Question n° ' . $id_question . ' : ' . $reponses[0]['question'] . '</h1>';
+   echo '<h1>Question n° ' . $id_question . ' : ' . $reponses[0]['question'] . '</h1>'; //Affichage de la question à partir du tableau obtenu par la requête SQL
 	
-	echo "<form action='index.php?route=route pas encore définie' method='post'> 
-				<fieldset>
-				<legend>Choisir une ou plusieurs réponses : </legend>";
+	echo '<form action="index.php?route=quiz?question="' . $id_question + 1 . 'method="post">'; //quand le formulaire est validé (que l'élève a choisi ses réponses et cliqué sur valider), on envoit son identifiant (champ hidden) ainsi que ses réponses au ctrl_quiz qui les enverra au crud.
+	echo '		<fieldset>
+				<legend>Choisir une ou plusieurs réponses : </legend>';
 	
 	foreach ($reponses as $rep) {
         echo '		<p>' . $rep['reponse'] . '<input type="checkbox" value="' . $rep['id_rep'] . '"name="rep' . $rep['id_rep'] . '" /></p>';
@@ -17,8 +17,6 @@ function vue_reponses($id_question, $reponses, $id_utilisateur) {
 	echo  '		<input type="hidden" name="id_utilisateur" value="' . $id_utilisateur . '" />';
 	echo	'	<p><input type="submit" value="Valider" /></p></fieldset>
 			</form>';
-    
-   echo '<a href=index.php?route=quiz?question=' . $id_question + 1;
     
 	
 	require('vues/blocs/footer.php');
