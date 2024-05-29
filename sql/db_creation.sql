@@ -28,8 +28,3 @@ CREATE TABLE resultat (
     FOREIGN KEY (user_id) REFERENCES users(id),
     FOREIGN KEY (question_id) REFERENCES question(id)
 );
-
-CREATE TABLE score (
-    temps int PRIMARY KEY,
-    score int
-);
