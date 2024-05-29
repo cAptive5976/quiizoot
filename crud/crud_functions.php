@@ -1,7 +1,7 @@
 <?php
 
 function results_cleaner($connex) {
-    $req = "DELETE FROM resultat"; // Efface toute la table resulats
+    $req = "DELETE FROM resultat"; // Efface toute la table resultat
 
     $res = $connex->query($req);
     $res->closeCursor();
