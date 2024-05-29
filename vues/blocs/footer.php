@@ -5,3 +5,4 @@
         <img src="images/MP_trp.png" alt="Logo IUT-MP" id="MP">
     </div>
 </footer>
+</body>
