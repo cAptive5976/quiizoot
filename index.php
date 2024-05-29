@@ -19,11 +19,11 @@
             results_cleaner_ctrl();
             break;
         case 'login':
-            require('ctrl/auth_ctrl.php');
+            require('ctrl/ctrl_auth.php');
             break;
         case 'menu_admin':
-                require('ctrl/menu_admin_ctrl.php');
-                break;
+            require('ctrl/ctrl_menu_admin.php');
+            break;
         default:
             require('vues/404.php');
             break;
