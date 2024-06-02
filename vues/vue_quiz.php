@@ -16,6 +16,7 @@ function vue_reponses($id_question, $reponses, $id_utilisateur) {
     }
 					
 	echo    '	<input type="hidden" name="id_utilisateur" value="' . $id_utilisateur . '" />';
+	echo    '	<input type="hidden" name="question_suivante" value=false />';
 	echo	'	<p><input type="submit" value="Valider" /></p></fieldset>
 			</form>';
     
