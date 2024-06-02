@@ -43,17 +43,18 @@ function ctrl_quiz($id_question) {
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		//ici il faut récupérer les réponses de l'élève quand il valide, je ne sais pas vraiment comment faire ça
 		$id_utilisateur = $_POST['id_utilisateur']; //on récupère à nouveau l'id de l'utilisateur pour l'envoyer dans la base de données ensuite
-		
-		foreach ($reponses as $rep) {
-			$rep['id_rep'] = $_POST[$rep['id_rep']]; //pas sûr qu'on puisse l'écrire comme ça, mais ici on récupère les réponses de l'élève
-		}
-		
+		$question_suivante = $_POST['question_suivante']; //ici on récupère un paramètre 'question suivante' qui est initialisé à false quand c'est l'élève qui envoie ses réponses, et true si c'est l'administrateur qui envoie la page de la question suivante
+		if ($question_suivante == false) { //comme le paramètre question suivante est false, on sait que c'est l'élève qui a envoyé ses réponses donc on envoit les réponses dans la base de données
+			foreach ($reponses as $rep) {
+				$rep['id_rep'] = $_POST[$rep['id_rep']]; //pas sûr qu'on puisse l'écrire comme ça, mais ici on récupère les réponses de l'élève
+			}
+		}	
 	}
-	if ($id_question >= 40) && ($question_suivante == true) { //si l'admin passe à la question suivante, et que l'id de question est supérieur à 40, on affiche la fin du quiz (je ne sais pas vraiment si il faut faire ça avec un booléen)
-		ctrl_page_fin_quiz();
-	} elseif ($id_question <= 40) && ($question_suivante == true) { //si l'admin passe à la question suivante, mais que l'id de question est inférieur à 40, on affiche la question suivante
-		ctrl_vue_quiz($id_question, $id_utilisateur);
-	} else { //sinon, on affiche la page d'attente de la question suivante
+	if ($question_suivante == true) {
+		if ($id_question >= 40) { //si l'admin passe à la question suivante, et que l'id de question est supérieur à 40, on affiche la fin du quiz
+			ctrl_page_fin_quiz();
+		} elseif ($id_question <= 40) { //si l'admin passe à la question suivante, mais que l'id de question est inférieur à 40, on affiche la question suivante
+			ctrl_vue_quiz($id_question, $id_utilisateur);
+	} elseif ($question_suivante == false) { //sinon, on affiche la page d'attente de la question suivante
 		ctrl_vue_page_attente_question_suivante();
 	}
-}
