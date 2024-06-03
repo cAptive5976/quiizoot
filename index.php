@@ -37,6 +37,8 @@ ini_set('display_errors', 1);
         case 'menu_admin':
             require('ctrl/ctrl_menu_admin.php');
             break;
+        case 'about':
+            require('vues/vue_about.php');
         default:
             require('vues/404.php');
             break;
