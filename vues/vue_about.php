@@ -17,7 +17,9 @@ echo "<p>Membres du projet :</p>
     <li>FUMOLEAU Nicolas</li>
     <li>RIVIERE Théo</li>
     <li>TODIKROMO Esteban</li>
-    <li>CHAILLOUX Matthieu</li>
+
 </ul>
 ";
 require('blocs/footer.php');
+
+echo '<li>CHAILLOUX Matthieu</li>';
