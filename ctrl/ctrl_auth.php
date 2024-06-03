@@ -6,5 +6,25 @@ function login() {
 }
 
 function login_admin() {
-    require('vues/vues_admin/auth_admin.php');
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+    
+        // Pour l'exemple, nous utilisons des valeurs en dur
+        if ($username == 'admin' && $password == 'password') {
+            $_SESSION['admin'] = true;
+            header('Location: index.php?route=menu_admin');
+            exit;
+        } else {
+            header('Location: index.php?route=login&error=1');
+            exit;
+        }
+    }
+    
+    if (isset($_SESSION['admin']) && $_SESSION['admin']) {
+        header('Location: index.php?route=menu_admin');
+        exit;
+    } else {
+        require('vues/auth_admin.php');
+    }
 }
