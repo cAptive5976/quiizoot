@@ -8,7 +8,7 @@ echo '<label for="nom">Nom :</label>';
 echo '<input type="text"  name="nom" required><br><br>';
 echo '<label for="prenom">Prénom :</label>';
 echo '<input type="text" name="prenom" required><br><br>';
-echo '<button type="submit">Connexion</button>';
+echo '<a class=button_admin >Connexion</a>';
 echo '</form></p>';
 
 include('vues/blocs/footer.php');
