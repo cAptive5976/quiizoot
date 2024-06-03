@@ -23,17 +23,13 @@ function score_classe($connex) {
 }
 
 function login_admin_crud($connex, $prenom, $nom) {
-    $req = "SELECT u.prenom, u.nom FROM users u WHERE u.prenom = :prenom AND u.nom = :nom AND u.isadmin = true";
+    $req = "SELECT u.prenom, u.nom, u.isadmin, u.password FROM users u WHERE u.prenom = :prenom AND u.nom = :nom AND u.isadmin = true";
     $stmt = $connex->prepare($req);
     $stmt->bindParam(':prenom', $prenom, PDO::PARAM_STR);
     $stmt->bindParam(':nom', $nom, PDO::PARAM_STR);
     $stmt->execute();
-    $login = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $login = $stmt->fetch(PDO::FETCH_ASSOC);
     $stmt->closeCursor();
-
-    if (empty($login)) {
-        return null;
-    }
 
     return $login;
 }

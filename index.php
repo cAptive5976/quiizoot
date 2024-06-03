@@ -49,7 +49,7 @@ ini_set('display_errors', 1);
             require('vues/vue_about.php');
             break;
         default:
-            require('vues/404.php');
+            require('vues/vue_error.php');
             break;
     }
 
