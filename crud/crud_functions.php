@@ -44,6 +44,7 @@ function login_user_crud($connex, $prenom, $nom, $classe) {
     $res->bindParam(':prenom', $prenom, PDO::PARAM_STR);
     $res->bindParam(':nom', $nom, PDO::PARAM_STR);
     $res->bindParam(':classe', $classe, PDO::PARAM_STR);
-    $res->closeCursor();
+    $res->execute();
 }
+
 
