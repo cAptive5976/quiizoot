@@ -1,6 +1,6 @@
 <?php
 
-//require ('blocs/header.php');
+require ('../blocs/header.php');
 
 echo '<h1> Connexion utilisateur</h1>';
 echo '<p><form action="index.php?route=login_user" method="post">';
@@ -16,4 +16,4 @@ echo '</select><br><br>';
 echo '<button type="submit">Connexion</button>';
 echo '</form></p>';
 
-//require('blocs/footer.php');
+require('../blocs/footer.php');
