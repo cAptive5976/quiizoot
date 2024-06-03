@@ -46,9 +46,33 @@ function ctrl_id_user($prenom, $nom, $classe) {
 //		return $id_utilisateur;
 //}
 
-//fonction crud pour afficher les réponses
-//
+//fonction crud pour afficher toutes les réponses à cocher selon l'id de question
+
 //function recherche_reponses($connex, $id_question) {
+//		$req = "SELECT id, enonce_reponse FROM reponse WHERE question_id = :id;
+//		$res = $connex->prepare($req);
+//		$res->bindParam(':id', $id_question, PDO::PARAM_STR);
+//    $res->execute();
+//    $reponses = $res->fetchAll(PDO::FETCH_ASSOC);
+//    $res->closeCursor();
+//		return $reponses;
+//}
+
+//fonction crud pour afficher l'énoncé de la question a partir de son id
+
+//function recherche_question($connex, $id_question) {
+//		$req = "SELECT id, enonce FROM question WHERE id = :id;
+//		$res = $connex->prepare($req);
+//		$res->bindParam(':id', $id_question, PDO::PARAM_STR);
+//    $res->execute();
+//    $question = $res->fetchAll(PDO::FETCH_ASSOC);
+//    $res->closeCursor();
+//		return $question;
+//}
+
+//fonction crud pour afficher les réponses correctes
+//
+//function recherche_bonnes_reponses($connex, $id_question) {
 //
 //		$req = "SELECT question.enonce AS question, reponse.enonce_reponse AS reponse, reponse.id AS id_rep FROM question INNER JOIN reponse ON question.reponse_id = reponse.id WHERE question.id = :id";
 //		$res = $connex->prepare($req);
@@ -69,15 +93,19 @@ function ctrl_quiz($id_question) {
     $c = connection();
     require('crud/crud_functions.php');
 	
+	$question = recherche_question($c, $id_question);
 	$reponses = recherche_reponses($c, $id_question);
+	$bonnes_reponses = recherche_bonnes_reponses($c, $id_question);
 	
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		//ici il faut récupérer les réponses de l'élève quand il valide, je ne sais pas vraiment comment faire ça
 		$id_utilisateur = $_POST['user_id']; //on récupère à nouveau l'id de l'utilisateur pour l'envoyer dans la base de données ensuite
 		$question_suivante = $_POST['question_suivante']; //ici on récupère un paramètre 'question suivante' qui est initialisé à false quand c'est l'élève qui envoie ses réponses, et true si c'est l'administrateur qui envoie la page de la question suivante
 		if ($question_suivante == false) { //comme le paramètre question suivante est false, on sait que c'est l'élève qui a envoyé ses réponses donc on envoit les réponses dans la base de données
-			foreach ($reponses as $rep) {
-				if ($_POST[$rep['id']] ; //ici il faudrait calculer le score de l'élève en fonction de ses réponses justes et du temps qu'il a mis à répondre
+			foreach ($bonnes_reponses as $rep) {
+				if (isset($_POST[$rep['id_rep']]) {
+					//ici il faudrait calculer le score de l'élève en fonction de ses réponses justes et du temps qu'il a mis à répondre
+				} 
 			}
 		}
 	}
