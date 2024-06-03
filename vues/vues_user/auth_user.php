@@ -2,18 +2,25 @@
 
 require ('vues/blocs/header.php');
 
-echo '<h1> Connexion utilisateur</h1>';
-echo '<p><form action="index.php?route=login_user" method="post">';
-echo '<label for="nom">Nom :</label>';
-echo '<input type="text" name="nom" required><br><br>';
-echo '<label for="prenom">Prénom :</label>';
-echo '<input type="text" name="prenom" required><br><br>';
-echo '<label for="classe">Choisissez votre classe:</label>';
-echo '<select id="classe" name="classe">';
-echo '<option value="général">Général</option>';
-echo '<option value="sti2d">STI2D</option>';
-echo '</select><br><br>';
-echo "<button type='submit' class='button_connex'>Connexion</button>";
-echo '</form></p>';
+echo '<form action="index.php?route=login_user" method="post">';
+
+    echo "<label for='username'>Prénom</label>";
+    echo '<input type="text" placeholder="Prénom" name="prenom" id="prenom">';
+
+    echo "<label for='surname'>NOM</label>";
+    echo '<input type="text" placeholder="NOM" name="nom" id="nom">';
+
+    echo '<label for="classe">Choisissez votre classe:</label>';
+    echo '<div class="select-wrapper">';
+        echo '<select id="select" name="classe">';
+            echo '<option value="général">Général</option>';
+            echo '<option value="sti2d">STI2D</option>';
+        echo '</select>';
+    echo '</div>';
+
+    echo "<button type='submit'>Jouez !</button>";
+
+echo '</form>';
 
 require('vues/blocs/footer.php');
+?>

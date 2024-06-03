@@ -76,7 +76,7 @@ ul li:hover a, #header a:hover {
 ---------------------------------------------------*/
 
 form{
-    height: 520px;
+    height: 400px;
     width: 400px;
     background-color: rgba(255,255,255,0.13);
     position: absolute;
@@ -87,7 +87,7 @@ form{
     backdrop-filter: blur(10px);
     border: 2px solid rgba(255,255,255,0.1);
     box-shadow: 0 0 40px rgba(8,7,16,0.6);
-    padding: 50px 35px;
+    padding: 40px 25px;
 }
 
 form *{
@@ -97,19 +97,21 @@ form *{
     outline: none;
     border: none;
 }
+
 form h3{
     font-size: 32px;
-    font-weight: 500;
-    line-height: 42px;
+    line-height: 30px;
     text-align: center;
+    margin-top: 0px;
 }
 
 label{
     display: block;
-    margin-top: 30px;
+    margin-top: 10px;
     font-size: 16px;
     font-weight: 500;
 }
+
 input{
     display: block;
     height: 50px;
@@ -124,17 +126,71 @@ input{
 ::placeholder{
     color: #e5e5e5;
 }
+
 button{
     margin-top: 50px;
     width: 100%;
     background-color: #ffffff;
     color: #080710;
-    padding: 15px 0;
+    padding: 20px 0;
     font-size: 18px;
     font-weight: 600;
     border-radius: 5px;
     cursor: pointer;
 }
+
+/* Select Styles
+---------------------------------------------------*/
+
+select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    font-size: 16px;
+    font-weight: 300;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border 0.3s ease;
+}
+
+select:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+select:focus {
+    outline: none;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+select option {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #ffffff;
+}
+
+.select-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.select-wrapper::after {
+    content: '▼';
+    position: absolute;
+    top: 60%;
+    right: 10px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #ffffff;
+    font-size: 16px;
+}
+
 
 /*Content styles
 ---------------------------------------------------*/
