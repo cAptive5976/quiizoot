@@ -14,9 +14,11 @@
         	<nav>
         		<a href="index.php"><img src="images/Quiizoot!.png" alt="Logo de Quiizoot!" class="logo"></a>
         	     	<ul>
-        	         	<li><a href="index.php?route=apropos">A PROPOS</a></li>
+        	         	<li><a href="index.php?route=about">A PROPOS</a></li>
         	         	<li><a href="index.php?route=login">SE CONNECTER</a></li>
         	     	</ul>
        		</nav>
      	</div>    
 </header>
+
+<article>
