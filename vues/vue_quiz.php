@@ -12,7 +12,7 @@ function vue_reponses($id_question, $reponses, $id_utilisateur) {
 				<legend>Choisir une ou plusieurs réponses : </legend>';
 	
 	foreach ($reponses as $rep) {
-        echo '		<p>' . $rep['reponse'] . '<input type="checkbox" value="' . $rep['id'] . '"name="' . $rep['id']. '" /></p>';
+        echo '		<p>' . $rep['reponse'] . '<input type="checkbox" value="' . $rep['id_rep'] . '"name="' . $rep['id_rep']. '" /></p>';
     }
 					
 	echo    '	<input type="hidden" name="id_utilisateur" value="' . $id_utilisateur . '" />';
