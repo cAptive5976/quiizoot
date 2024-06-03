@@ -13,6 +13,7 @@
 -------------------------------------------------*/
 
 body {
+    color: var(--text-color);
     margin: 0;
     font-family: var(--font-family);
     background: var(--background-color) center/cover no-repeat;
@@ -21,7 +22,7 @@ body {
     min-height: 100vh;
 }
 
-/*Header styles
+/*Header and footer styles
 -------------------------------------------------*/
 
 #header, #footer {
@@ -110,21 +111,24 @@ p {
     to { border-right-color: transparent; }
 }
 
-#button {
-    font-family: monospace;
+.button_login_admin_user {
+    display: flex;
+    justify-content: center;
+    font-family: var(--font-family);
     font-size: 2rem;
     color: #FAFAFA;
     text-transform: uppercase;
-    padding: 10px 20px;
+    padding: 30px 30px;
     border-radius: 10px;
     border: 2px solid #FAFAFA;
     background: #252525;
     box-shadow: 3px 3px white;
     cursor: pointer;
-    margin: 35px 0;
+    margin: 20px 100px;
 }
 
-#button:active {
+
+.button_login_admin_user:active {
     box-shadow: none;
     transform: translate(3px, 3px);
 }
