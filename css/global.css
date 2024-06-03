@@ -111,22 +111,24 @@ p {
     to { border-right-color: transparent; }
 }
 
-.button {
-    font-family: monospace;
+.button_login_admin_user {
+    display: flex;
+    justify-content: center;
+    font-family: var(--font-family);
     font-size: 2rem;
     color: #FAFAFA;
     text-transform: uppercase;
-    padding: 5px 10px;
+    padding: 30px 30px;
     border-radius: 10px;
     border: 2px solid #FAFAFA;
     background: #252525;
     box-shadow: 3px 3px white;
     cursor: pointer;
-    margin: 20px 0;
+    margin: 20px 100px;
 }
 
 
-.button:active {
+.button_login_admin_user:active {
     box-shadow: none;
     transform: translate(3px, 3px);
 }
