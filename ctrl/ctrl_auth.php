@@ -6,6 +6,7 @@ function login() {
 }
 
 function login_admin() {
+    require('vues/vues_admin/auth_admin.php');
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $username = $_POST['username'];
         $password = $_POST['password'];
