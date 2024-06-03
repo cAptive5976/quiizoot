@@ -1,6 +1,6 @@
 <?php
 
-include('../blocs/header.php');
+include('vues/blocs/header.php');
   
 echo '<h1> Connexion administrateur</h1>';
 echo '<p><form action="index.php?route=login_user" method="post">';
@@ -11,4 +11,4 @@ echo '<input type="text" name="prenom" required><br><br>';
 echo '<button type="submit">Connexion</button>';
 echo '</form></p>';
 
-include('../blocs/footer.php');
+include('vues/blocs/footer.php');
