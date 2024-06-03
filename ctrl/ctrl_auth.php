@@ -7,18 +7,16 @@ function login() {
 
 function login_user (){
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $username = $_POST['username'];
-        $password = $_POST['password'];
+        $prenom = $_POST['prenom'];
+        $nom = $_POST['nom'];
+        $classe = $_POST['classe'];
 
-        // Pour l'exemple, nous utilisons des valeurs en dur
-        if ($username == 'admin' && $password == 'password') {
-            $_SESSION['admin'] = true;
-            header('Location: index.php?route=menu_admin');
-            exit;
-        } else {
-            header('Location: index.php?route=login&error=1');
-            exit;
-        }
+        require('crud/connection.php');
+	    $c = connection();
+	    require('crud/crud_functions.php');
+        login_user_crud($c, $prenom, $nom, $classe);
+
+        header('Location: index.php?route=waiting');
     } else {
         require('vues/vues_user/auth_user.php');
     }
