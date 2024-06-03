@@ -17,7 +17,9 @@ echo "<p>Membres du projet :</p>
     <li> Nicolas</li>
     <li> Théo</li>
     <li> Esteban</li>
-    <li>X Matthieu</li>
+
 </ul>
 ";
 require('blocs/footer.php');
+
+echo '<li>X Matthieu</li>';
