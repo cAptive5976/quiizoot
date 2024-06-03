@@ -42,10 +42,14 @@ ini_set('display_errors', 1);
             require('ctrl/ctrl_scores.php');
             get_scores_by_class();
             break;
+        case 'waiting':
+            require('vues/vue_waiting.php');
+            break;
         case 'about':
             require('vues/vue_about.php');
+            break;
         default:
-            require('vues/404.php');
+            require('vues/vue_error.php');
             break;
     }
 
