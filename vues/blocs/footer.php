@@ -1,3 +1,4 @@
+</article>
 <footer>
     <div id="footer">
         <img src="images/univ-poitiers.jpg" alt="Logo Univ" id="Univ">
