@@ -174,6 +174,88 @@ p {
     margin-top: 20px;
     margin-bottom: 10px;
 }
+.bouton_scores {
+    display: flex;
+    justify-content: center;
+    font-family: var(--font-family);
+    font-size: 2rem;
+    color: #FAFAFA;
+    text-transform: uppercase;
+    padding: 30px 30px;
+    border-radius: 10px;
+    border: 2px solid #FAFAFA;
+    background: #a53636;
+    box-shadow: 3px 3px white;
+    cursor: pointer;
+    margin: 20px 750px;
+}
+
+.podium {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 20px;
+    margin-top: 50px;
+}
+
+.podium-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    background-color: #f4f4f4;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    width: 150px;
+    text-align: center;
+}
+
+.podium-item.first {
+    order: 2;
+    background-color: #e1ad21;
+    height: 200px;
+}
+
+.podium-item.second {
+    order: 1;
+    background-color: #c0c0c0;
+    margin-top: 20px;
+    height: 175px;
+}
+
+.podium-item.third {
+    order: 3;
+    background-color: #a76726;
+    margin-top: 40px;
+    height: 150px;
+}
+
+.podium-rank {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.podium-name, .podium-score {
+    font-size: 1.2rem;
+    margin: 5px 0;
+}
+
+.bouton_scores {
+    display: block;
+    text-align: center;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.bouton_scores:hover {
+    background-color: #0056b3;
+}
 
 /*Footer styles
 -------------------------------------------------------*/
