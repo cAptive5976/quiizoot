@@ -12,7 +12,7 @@ function vue_reponses($id_question, $reponses, $id_utilisateur) {
 				<legend>Choisir une ou plusieurs réponses : </legend>';
 	
 	foreach ($reponses as $rep) {
-        echo '		<p>' . $rep['reponse'] . '<input type="checkbox" value="' . $rep['id_rep'] . '"name="' . $rep['id_rep'] . '" /></p>';
+        echo '		<p>' . $rep['reponse'] . '<input type="checkbox" value="' . $rep['id_rep'] . '"name="' . $rep['id_rep']. '" /></p>';
     }
 					
 	echo    '	<input type="hidden" name="id_utilisateur" value="' . $id_utilisateur . '" />';
@@ -23,11 +23,7 @@ function vue_reponses($id_question, $reponses, $id_utilisateur) {
 	
 	require('vues/blocs/footer.php');
 }
-//Requête SQL possible pour obtenir les réponses (je ne suis pas sûr):
-//
-//SELECT question.enonce AS question, reponse.enonce_reponse AS reponse, reponse.id AS id_rep FROM question
-//INNER JOIN reponse ON question.reponse_id = reponse.id
-//WHERE question.id = :id;
+
 
 function vue_page_fin_quiz() {
 	require('vues/blocs/header.php');
