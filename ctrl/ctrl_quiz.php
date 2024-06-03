@@ -31,6 +31,37 @@ function ctrl_id_user($prenom, $nom, $classe) {
 	$id_utilisateur = recherche_id_utilisateur($prenom, $nom, $classe); //recherche de l'identifiant de l'utilisateur
 }
 
+//fonction pour trouver l'id utilisateur à partir du nom, du prénom et de la classe de l'élève :
+
+//function recherche_id_utilisateur($connex, $prenom, $nom, $classe) {
+//
+//		$req = "SELECT u.id FROM users u WHERE u.prenom = :prenom AND u.nom = :nom AND u.classe = :classe";
+//    $res = $connex->prepare($req);
+//    $res->bindParam(':prenom', $prenom, PDO::PARAM_STR);
+//    $res->bindParam(':nom', $nom, PDO::PARAM_STR);
+//		$res->bindParam(':classe', $classe, PDO::PARAM_STR);
+//    $res->execute();
+//    $id_utilisateur = $res->fetchAll(PDO::FETCH_ASSOC);
+//    $res->closeCursor();
+//		return $id_utilisateur;
+//}
+
+//fonction crud pour afficher les réponses
+//
+//function recherche_reponses($connex, $id_question) {
+//
+//		$req = "SELECT question.enonce AS question, reponse.enonce_reponse AS reponse, reponse.id AS id_rep FROM question INNER JOIN reponse ON question.reponse_id = reponse.id WHERE question.id = :id";
+//		$res = $connex->prepare($req);
+//		$res->bindParam(':id', $id_question, PDO::PARAM_STR);
+//		$res->execute();
+//		$reponses = $res->fetchAll(PDO::FETCH_ASSOC);
+//		$res->closeCursor();
+//		return $reponses;
+//
+//}
+
+
+
 //fonction qui à partir de l'identifiant de la question, si celui-ci est inférieur à 40, appelle la fonction d'affichage des réponses à cocher. Si l'id de question est supérieur à 40, affiche la page de fin de quiz. Au lancement du quiz, cette fonction serait exécutée avec l'id de question 1, puis avec un id augmenté de 1 à chaque question suivante jusqu'à la 40ème.
 function ctrl_quiz($id_question) {
 	
@@ -42,13 +73,13 @@ function ctrl_quiz($id_question) {
 	
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		//ici il faut récupérer les réponses de l'élève quand il valide, je ne sais pas vraiment comment faire ça
-		$id_utilisateur = $_POST['id_utilisateur']; //on récupère à nouveau l'id de l'utilisateur pour l'envoyer dans la base de données ensuite
+		$id_utilisateur = $_POST['user_id']; //on récupère à nouveau l'id de l'utilisateur pour l'envoyer dans la base de données ensuite
 		$question_suivante = $_POST['question_suivante']; //ici on récupère un paramètre 'question suivante' qui est initialisé à false quand c'est l'élève qui envoie ses réponses, et true si c'est l'administrateur qui envoie la page de la question suivante
 		if ($question_suivante == false) { //comme le paramètre question suivante est false, on sait que c'est l'élève qui a envoyé ses réponses donc on envoit les réponses dans la base de données
 			foreach ($reponses as $rep) {
-				$rep['id_rep'] = $_POST[$rep['id_rep']]; //pas sûr qu'on puisse l'écrire comme ça, mais ici on récupère les réponses de l'élève
+				if ($_POST[$rep['id']] ; //ici il faudrait calculer le score de l'élève en fonction de ses réponses justes et du temps qu'il a mis à répondre
 			}
-		}	
+		}
 	}
 	if ($question_suivante == true) {
 		if ($id_question >= 40) { //si l'admin passe à la question suivante, et que l'id de question est supérieur à 40, on affiche la fin du quiz
@@ -58,3 +89,13 @@ function ctrl_quiz($id_question) {
 	} elseif ($question_suivante == false) { //sinon, on affiche la page d'attente de la question suivante
 		ctrl_vue_page_attente_question_suivante();
 	}
+}
+}
+
+
+
+function temps_restant() {
+
+	
+}
+
