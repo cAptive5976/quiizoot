@@ -10,8 +10,11 @@ echo '<label for="prenom">Prénom :</label>';
 echo '<input type="text" name="prenom" required><br><br>';
 echo '<label for="classe">Choisissez votre classe:</label>';
 echo '<select id="classe" name="classe">';
+
+echo '<option value="bacpro">BAC Professionnel</option>';
 echo '<option value="général">Général</option>';
 echo '<option value="sti2d">STI2D</option>';
+
 echo '</select><br><br>';
 echo "<button type='submit' class='button_connex'>Connexion</button>";
 echo '</form></p>';
