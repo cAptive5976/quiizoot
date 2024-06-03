@@ -37,6 +37,10 @@ ini_set('display_errors', 1);
         case 'menu_admin':
             require('ctrl/ctrl_menu_admin.php');
             break;
+        case 'scores' :
+            require('ctrl/ctrl_scores.php');
+            get_scores_by_class();
+            break;
         case 'about':
             require('vues/vue_about.php');
         default:
