@@ -4,7 +4,7 @@ include('vues/blocs/header.php');
 
 echo '<form action="index.php?route=login_admin" method="post">';
 
-    echo '<h3>Connexion</h3>';
+    echo '<h3>Connexion admin</h3>';
 
     echo "<label for='username'>Prénom</label>";
     echo '<input type="text" placeholder="Prénom" name="prenom" id="prenom">';
