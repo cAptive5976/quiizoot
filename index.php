@@ -10,7 +10,7 @@ ini_set('display_errors', 1);
 
     switch ($route) {
         case null:
-            require('vues/accueil.php');
+            require('vues/vue_accueil.php');
             break;
         case 'console':
             require('vues/console.php');

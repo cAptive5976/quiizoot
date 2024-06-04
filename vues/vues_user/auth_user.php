@@ -4,6 +4,8 @@ require ('vues/blocs/header.php');
 
 echo '<form action="index.php?route=login_user" method="post">';
 
+    echo '<h3>Connexion invités</h3>';
+
     echo "<label for='username'>Prénom</label>";
     echo '<input type="text" placeholder="Prénom" name="prenom" id="prenom">';
 

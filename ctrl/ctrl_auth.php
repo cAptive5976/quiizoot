@@ -2,7 +2,7 @@
 session_start();
 
 function login() {
-    require('vues/login_admin_user.php');
+    require('vues/vue_login.php');
 }
 
 function login_user (){
