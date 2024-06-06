@@ -10,6 +10,7 @@ function login_user (){
         $prenom = $_POST['prenom'];
         $nom = $_POST['nom'];
         $classe = $_POST['classe'];
+        $_SESSION['user'] = $prenom . $nom;
 
         require('crud/connection.php');
 	    $c = connection();
