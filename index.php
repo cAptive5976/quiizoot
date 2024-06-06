@@ -43,7 +43,8 @@ ini_set('display_errors', 1);
             get_scores_by_class();
             break;
         case 'waiting':
-            require('vues/vue_waiting.php');
+            require('ctrl/ctrl_waiting.php');
+            get_queue();
             break;
         case 'about':
             require('vues/vue_about.php');

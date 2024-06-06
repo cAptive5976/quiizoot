@@ -48,4 +48,12 @@ function login_user_crud($connex, $prenom, $nom, $classe) {
     $res->execute();
 }
 
+function get_users($connex) {
+    $req = "SELECT prenom, nom, classe FROM users WHERE isadmin = false ORDER BY id ASC";
+    $stmt = $connex->prepare($req);
+    $stmt->execute();
+    $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
 
+    return $users;
+}
