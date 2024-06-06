@@ -1,15 +1,27 @@
-
-
 <?php
 include 'vues/blocs/header.php';
+
 // Définition de la fonction display_scores
 function display_scores($scores) {
+    // Trier les scores pour obtenir les top 3
     usort($scores, function($a, $b) {
         return $b['total_points'] - $a['total_points'];
     });
     $top_three = array_slice($scores, 0, 3);
-    
-    echo '<div class="container">';
+
+    // Calculer la meilleure classe
+    $classe_points = [];
+    foreach ($scores as $score) {
+        if (!isset($classe_points[$score['classe']])) {
+            $classe_points[$score['classe']] = 0;
+        }
+        $classe_points[$score['classe']] += $score['total_points'];
+    }
+    arsort($classe_points);
+    $best_classe = key($classe_points);
+    $best_classe_points = reset($classe_points);
+
+    echo '<div class="container-encadre">';
     echo '<h1 class="main-title">Podium des Scores</h1>';
     
     echo '<div class="podium">';
@@ -38,8 +50,16 @@ function display_scores($scores) {
         }
     }
     echo '</div>';
-    
+
+    // Afficher le rectangle avec la meilleure classe
+    echo '<div class="best-classe">';
+    echo '<h2>Meilleure Classe: ' . htmlspecialchars($best_classe) . '</h2>';
+    echo '<p>Total Points: ' . htmlspecialchars($best_classe_points) . '</p>';
+    echo '</div>';
+
     echo '<a href="index.php?route=menu_admin" class="bouton_scores">Fermer Quizz</a>';
     echo '</div>'; // Fermeture de la div container
+
+    include 'vues/blocs/footer.php';
 }
 ?>
