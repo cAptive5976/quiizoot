@@ -6,7 +6,12 @@ function results_cleaner($connex) {
     $res = $connex->query($req);
     $res->closeCursor();
 }
+function user_cleaner($connex) {
+    $req = "DELETE FROM users WHERE isadmin=false"; // Efface toute la table utilisateurs non-admin
 
+    $res = $connex->query($req);
+    $res->closeCursor();
+}
 function score_classe($connex) {
     $req = "SELECT u.prenom, u.nom, u.classe, sum(s.score) AS total_points
         FROM resultat r

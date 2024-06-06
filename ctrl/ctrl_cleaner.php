@@ -4,5 +4,6 @@ function results_cleaner_ctrl() {
     $c = connection();
     require('crud/crud_functions.php');
     results_cleaner($c);
+    user_cleaner($c);
     header('vues/vue_accueil.php');
 }
