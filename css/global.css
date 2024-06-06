@@ -192,7 +192,6 @@ select option {
     font-size: 16px;
 }
 
-
 /*Content styles
 ---------------------------------------------------*/
 
@@ -304,6 +303,31 @@ h1 {
         background-position: 0% 50%;
     }
 }
+
+/*File d'attente
+---------------------------------------------------*/
+
+#queue {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    min-height: 50vh;
+    margin: 0;
+    overflow: hidden;
+}
+.joueur {
+    width: calc(20% - 20px);
+    padding: 25px;
+    border: 1px solid #4067ac;
+    border-radius: 10px;
+    background-color: #4067ac;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
 
 /*Score table
 ---------------------------------------------------*/
