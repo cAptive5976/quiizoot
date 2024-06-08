@@ -26,7 +26,6 @@ function vue_reponses($id_question, $reponses, $id_utilisateur) {
     }
 					
 	echo    '	<input type="hidden" name="id_utilisateur" value="' . $id_utilisateur . '" />';
-	echo    '	<input type="hidden" name="question_suivante" value=false />';
 	echo	'	<p><input type="submit" value="Valider" /></p></fieldset>
 			</form>';
    
@@ -44,7 +43,7 @@ function vue_page_fin_quiz() {
 	echo '<p>Merci d\'avoir participé au quiz</p>';    
    
 	require('vues/blocs/footer.php');
-    session_destroy();
+   session_destroy();
 }
 
 function vue_attente_question_suivante() {
