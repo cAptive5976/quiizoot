@@ -1,10 +1,22 @@
 <?php
 
+<<<<<<< HEAD
+function afficherCompteARebours($seconds) {
+    while ($seconds > 0) {
+        echo "<p>Il reste $seconds secondes.</p>";
+        sleep(1); // Attendre une seconde
+        $seconds--;
+    }
+    echo "<p>Le temps est écoulé !</p>";
+}
+
+=======
 session_start();
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'user') {
     header('Location: index.php?route=login_user'); // Si pas connecter, envoit sur la page de connection
     exit();
 }
+>>>>>>> 4783acd8c486481c2c856c8f62591f7e881c0c20
 function vue_reponses($id_question, $reponses, $id_utilisateur) {
 	require('vues/blocs/header.php');
     
@@ -22,10 +34,10 @@ function vue_reponses($id_question, $reponses, $id_utilisateur) {
     }
 					
 	echo    '	<input type="hidden" name="id_utilisateur" value="' . $id_utilisateur . '" />';
-	echo    '	<input type="hidden" name="question_suivante" value=false />';
 	echo	'	<p><input type="submit" value="Valider" /></p></fieldset>
 			</form>';
-    
+   
+   afficherCompteARebours(20);
 	
 	require('vues/blocs/footer.php');
 }
@@ -39,7 +51,7 @@ function vue_page_fin_quiz() {
 	echo '<p>Merci d\'avoir participé au quiz</p>';    
    
 	require('vues/blocs/footer.php');
-    session_destroy();
+   session_destroy();
 }
 
 function vue_attente_question_suivante() {
