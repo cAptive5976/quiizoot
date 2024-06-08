@@ -1,11 +1,9 @@
 <?php
-// Creation de la session
-session_start();
 // Affiche les erreurs
 error_reporting(E_ALL & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED); 
 ini_set('display_errors', 1);
 
-    $route = null;
+    $route = null; // Valeur par défaut de la route, redirige vers la page principale avec le case null
     if (isset($_GET['route'])) {
         $route = $_GET['route'];
     }
@@ -14,17 +12,9 @@ ini_set('display_errors', 1);
         case null:
             require('vues/vue_accueil.php');
             break;
-        case 'console':
-            require('vues/console.php');
-            break;
-        case 'quiz':
-            require('ctrl/ctrl_quiz.php');
-	    ctrl_quiz();
-            break;
-        case 'clean_results':
-            require('ctrl/ctrl_cleaner.php');
-            results_cleaner_ctrl();
-            break;
+
+        // Partie de connection
+
         case 'login':
             require('ctrl/ctrl_auth.php');
             login();
@@ -37,6 +27,8 @@ ini_set('display_errors', 1);
             require('ctrl/ctrl_auth.php');
             login_user();
             break;
+
+        // Accès interdit users
         case 'menu_admin':
             require('ctrl/ctrl_menu_admin.php');
             break;
@@ -44,14 +36,28 @@ ini_set('display_errors', 1);
             require('ctrl/ctrl_scores.php');
             get_scores_by_class();
             break;
+        case 'clean_results':
+            require('ctrl/ctrl_cleaner.php');
+            results_cleaner_ctrl();
+            break;
+
+        // Accès seulement après connection
         case 'waiting':
             require('ctrl/ctrl_waiting.php');
             get_queue();
             break;
+        case 'quiz':
+            require('ctrl/ctrl_quiz.php');
+            break;
+        case 'logout':
+            require('ctrl/ctrl_logout.php');
+            break;
+
+        // Autres
         case 'about':
             require('vues/vue_about.php');
             break;
-        default:
+        case 'error':
             require('vues/vue_error.php');
             break;
     }

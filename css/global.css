@@ -265,14 +265,23 @@ h1 {
     text-align: center;
     margin-top: 200px;
     font-family: "Kanit", sans-serif;
-    animation: 3s anim-lineUp ease-out, 5s wave-gradient linear infinite;
+    animation: 2s anim-lineUp ease-out, 5s wave-gradient linear infinite;
     background: linear-gradient(90deg, #ffdf00, #ffaf00, #ff8700, #ff5f00);
     background-size: 300% 300%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    text-fill-color: transparent;
 }
+
+#welcome-text {
+    display: block;
+    text-align: center;
+    font-family: "Kanit", sans-serif;
+    animation: 4s anim-lineUp ease-out, 5s wave-gradient linear infinite;
+    font-size: 25px;
+    margin-top: 10px;
+}
+
 
 @keyframes anim-lineUp {
     0% {
@@ -303,7 +312,6 @@ h1 {
         background-position: 0% 50%;
     }
 }
-
 /*File d'attente
 ---------------------------------------------------*/
 
