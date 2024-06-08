@@ -44,6 +44,7 @@ function vue_page_fin_quiz() {
 	echo '<p>Merci d\'avoir participé au quiz</p>';    
    
 	require('vues/blocs/footer.php');
+    session_destroy();
 }
 
 function vue_attente_question_suivante() {
