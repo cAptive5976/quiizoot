@@ -31,61 +31,6 @@ function ctrl_id_user($prenom, $nom, $classe) {
 	$id_utilisateur = recherche_id_utilisateur($prenom, $nom, $classe); //recherche de l'identifiant de l'utilisateur
 }
 
-//fonction pour trouver l'id utilisateur à partir du nom, du prénom et de la classe de l'élève :
-
-//function recherche_id_utilisateur($connex, $prenom, $nom, $classe) {
-//
-//		$req = "SELECT u.id FROM users u WHERE u.prenom = :prenom AND u.nom = :nom AND u.classe = :classe";
-//    $res = $connex->prepare($req);
-//    $res->bindParam(':prenom', $prenom, PDO::PARAM_STR);
-//    $res->bindParam(':nom', $nom, PDO::PARAM_STR);
-//		$res->bindParam(':classe', $classe, PDO::PARAM_STR);
-//    $res->execute();
-//    $id_utilisateur = $res->fetchAll(PDO::FETCH_ASSOC);
-//    $res->closeCursor();
-//		return $id_utilisateur;
-//}
-
-//fonction crud pour afficher toutes les réponses à cocher selon l'id de question
-
-//function recherche_reponses($connex, $id_question) {
-//		$req = "SELECT id, enonce_reponse FROM reponse WHERE question_id = :id;
-//		$res = $connex->prepare($req);
-//		$res->bindParam(':id', $id_question, PDO::PARAM_STR);
-//    $res->execute();
-//    $reponses = $res->fetchAll(PDO::FETCH_ASSOC);
-//    $res->closeCursor();
-//		return $reponses;
-//}
-
-//fonction crud pour afficher l'énoncé de la question a partir de son id
-
-//function recherche_question($connex, $id_question) {
-//		$req = "SELECT id, enonce FROM question WHERE id = :id;
-//		$res = $connex->prepare($req);
-//		$res->bindParam(':id', $id_question, PDO::PARAM_STR);
-//    $res->execute();
-//    $question = $res->fetchAll(PDO::FETCH_ASSOC);
-//    $res->closeCursor();
-//		return $question;
-//}
-
-//fonction crud pour afficher les réponses correctes
-//
-//function recherche_bonnes_reponses($connex, $id_question) {
-//
-//		$req = "SELECT question.enonce AS question, reponse.enonce_reponse AS reponse, reponse.id AS id_rep FROM question INNER JOIN reponse ON question.reponse_id = reponse.id WHERE question.id = :id";
-//		$res = $connex->prepare($req);
-//		$res->bindParam(':id', $id_question, PDO::PARAM_STR);
-//		$res->execute();
-//		$reponses = $res->fetchAll(PDO::FETCH_ASSOC);
-//		$res->closeCursor();
-//		return $reponses;
-//
-//}
-
-
-
 //fonction qui à partir de l'identifiant de la question, si celui-ci est inférieur à 40, appelle la fonction d'affichage des réponses à cocher. Si l'id de question est supérieur à 40, affiche la page de fin de quiz. Au lancement du quiz, cette fonction serait exécutée avec l'id de question 1, puis avec un id augmenté de 1 à chaque question suivante jusqu'à la 40ème.
 function ctrl_quiz($id_question) {
 	

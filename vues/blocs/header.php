@@ -16,7 +16,17 @@
         		<a href="index.php"><img src="images/Quiizoot!.png" alt="Logo de Quiizoot!" class="logo"></a>
         	     	<ul>
         	         	<li><a href="index.php?route=about">A PROPOS</a></li>
-        	         	<li><a href="index.php?route=login">SE CONNECTER</a></li>
+                        <?php
+                        session_start();
+                        if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'user' && $_SESSION['role'] !== 'admin') {
+                            echo '<li><a href="index.php?route=login">SE CONNECTER</a></li>';
+                        }
+                        else {
+                            echo '<li><a href="index.php?route=logout">SE DECONNECTER</a></li>';
+                            if (isset($_SESSION['user'])) {
+                                 echo '<li>Utilisateur : ' . $_SESSION['user'] . '</li>';
+                            }
+                        }?>
         	     	</ul>
        		</nav>
      	</div>    
