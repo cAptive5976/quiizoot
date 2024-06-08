@@ -70,7 +70,7 @@ function ctrl_id_user($prenom, $nom, $classe) {
 //		return $question;
 //}
 
-//fonction crud pour afficher les réponses correctes
+//fonction crud pour afficher les réponses correctes (/!\ ATTENTION LA REQUETE SQL POURRAIT ETRE FAUSSE /!\)
 //
 //function recherche_bonnes_reponses($connex, $id_question) {
 //
@@ -85,9 +85,8 @@ function ctrl_id_user($prenom, $nom, $classe) {
 //}
 
 //fonction crud pour insérer le score de l'élève
-
-//function insertionScore($id_utilisateur, $score) {
-//		$req = "UPDATE 
+//
+//	Ici faire une requête SQL pour insérer le score de l'élève en fonction de son temps de réponse
 //}
 
 function calculerDureeEnSecondes($startTime, $endTime) {
@@ -182,23 +181,23 @@ function recup_reponses_eleve() {
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		//ici il faut récupérer les réponses de l'élève quand il valide, je ne sais pas vraiment comment faire ça
 		$id_utilisateur = $_POST['user_id']; //on récupère à nouveau l'id de l'utilisateur pour l'envoyer dans la base de données ensuite
-		$question_suivante = $_POST['question_suivante']; //ici on récupère un paramètre 'question suivante' qui est initialisé à false quand c'est l'élève qui envoie ses réponses, et true si c'est l'administrateur qui envoie la page de la question suivante
-		if ($question_suivante == false) { //comme le paramètre question suivante est false, on sait que c'est l'élève qui a envoyé ses réponses donc on envoit les réponses dans la base de données
-			$dateTimeFin = new DateTime();
-			$heureFin = $dateTimeFin->date("Y-m-d H:i:s");
-			$duree_reponse = calculerDureeEnSecondes($heureDebut, $heureFin);
+		$question_suivante = $_SESSION['question_suivante']; //ici on récupère un paramètre de session 'question suivante' qui sera true si l'administrateur envoie la page de la question suivante, pas sûr qu'il faut faire comme ça pour gérer le passage à la question suivante par l'admin
+		
+		$dateTimeFin = new DateTime();
+		$heureFin = $dateTimeFin->date("Y-m-d H:i:s");
+		$duree_reponse = calculerDureeEnSecondes($heureDebut, $heureFin);
 			
-			foreach ($bonnes_reponses as $rep) {
-				if (!isset($_POST[$rep['id_rep']]) {
-					//ici il faudrait calculer le score de l'élève en fonction de ses réponses justes et du temps qu'il a mis à répondre
-					$score = 0;
-				} else {
-					$score = calculScore($duree_reponse);
-				}
+		foreach ($bonnes_reponses as $rep) {
+			if (!isset($_POST[$rep['id_rep']]) {
+				//ici il faudrait calculer le score de l'élève en fonction de ses réponses justes et du temps qu'il a mis à répondre
+				$score = 0;
+			} else {
+				$score = calculScore($duree_reponse);
 			}
-			
-			insertionScore($id_utilisateur, $score);
 		}
+			
+		insertionScore($id_utilisateur, $score);
+		
 	}
 }
 
