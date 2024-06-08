@@ -1,4 +1,14 @@
 <?php
+
+function afficherCompteARebours($seconds) {
+    while ($seconds > 0) {
+        echo "<p>Il reste $seconds secondes.</p>";
+        sleep(1); // Attendre une seconde
+        $seconds--;
+    }
+    echo "<p>Le temps est écoulé !</p>";
+}
+
 function vue_reponses($id_question, $reponses, $id_utilisateur) {
 	require('vues/blocs/header.php');
     
@@ -19,7 +29,8 @@ function vue_reponses($id_question, $reponses, $id_utilisateur) {
 	echo    '	<input type="hidden" name="question_suivante" value=false />';
 	echo	'	<p><input type="submit" value="Valider" /></p></fieldset>
 			</form>';
-    
+   
+   afficherCompteARebours(20);
 	
 	require('vues/blocs/footer.php');
 }
