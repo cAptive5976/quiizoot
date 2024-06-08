@@ -1,5 +1,6 @@
 <?php
 
+<<<<<<< HEAD
 function afficherCompteARebours($seconds) {
     while ($seconds > 0) {
         echo "<p>Il reste $seconds secondes.</p>";
@@ -9,6 +10,13 @@ function afficherCompteARebours($seconds) {
     echo "<p>Le temps est écoulé !</p>";
 }
 
+=======
+session_start();
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'user') {
+    header('Location: index.php?route=login_user'); // Si pas connecter, envoit sur la page de connection
+    exit();
+}
+>>>>>>> 4783acd8c486481c2c856c8f62591f7e881c0c20
 function vue_reponses($id_question, $reponses, $id_utilisateur) {
 	require('vues/blocs/header.php');
     

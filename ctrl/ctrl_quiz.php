@@ -31,6 +31,7 @@ function ctrl_id_user($prenom, $nom, $classe) {
 	$id_utilisateur = recherche_id_utilisateur($prenom, $nom, $classe); //recherche de l'identifiant de l'utilisateur
 }
 
+<<<<<<< HEAD
 //fonction pour trouver l'id utilisateur à partir du nom, du prénom et de la classe de l'élève :
 
 //function recherche_id_utilisateur($connex, $prenom, $nom, $classe) {
@@ -87,7 +88,7 @@ function ctrl_id_user($prenom, $nom, $classe) {
 //fonction crud pour insérer le score de l'élève
 //
 //	Ici faire une requête SQL pour insérer le score de l'élève en fonction de son temps de réponse
-//}
+//
 
 function calculerDureeEnSecondes($startTime, $endTime) {
     // Convertir les temps en timestamps
@@ -201,6 +202,8 @@ function recup_reponses_eleve() {
 	}
 }
 
+=======
+>>>>>>> 4783acd8c486481c2c856c8f62591f7e881c0c20
 //fonction qui à partir de l'identifiant de la question, si celui-ci est inférieur à 40, appelle la fonction d'affichage des réponses à cocher. Si l'id de question est supérieur à 40, affiche la page de fin de quiz. Au lancement du quiz, cette fonction serait exécutée avec l'id de question 1, puis avec un id augmenté de 1 à chaque question suivante jusqu'à la 40ème.
 function ctrl_quiz($id_question) {
 	

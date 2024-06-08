@@ -1,4 +1,11 @@
 <?php
+
+session_start();
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
+    header('Location: index.php?route=login_admin'); // Si pas admin, envoit sur la page de connection admin
+    exit();
+}
+
 include 'vues/blocs/header.php';
 
 // Définition de la fonction display_scores
