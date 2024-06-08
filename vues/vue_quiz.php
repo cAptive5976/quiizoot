@@ -1,4 +1,10 @@
 <?php
+
+session_start();
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'user') {
+    header('Location: index.php?route=login_user'); // Si pas connecter, envoit sur la page de connection
+    exit();
+}
 function vue_reponses($id_question, $reponses, $id_utilisateur) {
 	require('vues/blocs/header.php');
     
