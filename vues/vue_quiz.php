@@ -8,11 +8,9 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'user') {
 function vue_reponses($id_question, $question, $reponses, $id_utilisateur) {
     require('vues/blocs/header.php');
 
-    echo '<h2>QUIZZ</h2>';
+    echo '<h1 class="vue_question">Question n° ' . $id_question . ' : ' . $question[0]['enonce'] . '</h1>'; // Affichage de la question à partir du tableau obtenu par la requête SQL
 
-    echo '<h1>Question n° ' . $id_question . ' : ' . $question[0]['enonce'] . '</h1>'; // Affichage de la question à partir du tableau obtenu par la requête SQL
-
-    echo '<form action="index.php?route=quiz&id_user=' . $id_utilisateur . '&id_question=' . ($id_question + 1) . '" method="post">';
+    echo '<form class="vue_form" action="index.php?route=quiz&id_user=' . $id_utilisateur . '&id_question=' . ($id_question + 1) . '" method="post">';
     echo '<fieldset>
             <legend>Choisir une réponse : </legend>';
 
@@ -29,10 +27,7 @@ function vue_reponses($id_question, $question, $reponses, $id_utilisateur) {
 function vue_page_fin_quiz() {
     require('vues/blocs/header.php');
 
-    echo '<h2>QUIZZ</h2>';
-
-    echo '<p>Merci d\'avoir participé au quiz</p>';
+    echo '<p id="quiz_finished">Merci d\'avoir participé au quiz</p>';
 
     require('vues/blocs/footer.php');
 }
-?>
