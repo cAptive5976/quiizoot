@@ -5,14 +5,14 @@ if (!isset($_SESSION['role']) || ($_SESSION['role'] !== 'user' && $_SESSION['rol
     header('Location: index.php?route=login'); // Si pas connecté, envoit sur la page de connexion
     exit();
 }
-function show_waiting($queue) {
+function show_waiting($queue, $isactive) {
     require('blocs/header.php'); ?>
     <h1>File d'attente du Quiz</h1>
     <?php
     if (!isset($_SESSION['role']) || $_SESSION['role'] == 'admin') {
      echo '<a href=\'index.php?route=menu_admin\' class=button_login_admin_user>Retour sur le menu admin</a>';
-    } else {
-     echo '<a href=\'index.php?route=quiz\' class=button_login_admin_user>Démarrer le Quiz</a>';
+    } elseif ($isactive == 1) {
+        echo '<a href=\'index.php?route=quiz\' class=button_login_admin_user>Démarrer le Quiz</a>';
     }
     ?>
     <div id="queue">
