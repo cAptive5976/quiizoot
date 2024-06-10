@@ -12,7 +12,7 @@ function show_waiting($queue, $isactive) {
     if (!isset($_SESSION['role']) || $_SESSION['role'] == 'admin') {
      echo '<a href=\'index.php?route=menu_admin\' class=button_login_admin_user>Retour sur le menu admin</a>';
     } elseif ($isactive == 1) {
-        echo '<a href=\'index.php?route=quiz\' class=button_login_admin_user>Démarrer le Quiz</a>';
+        echo '<a href=\'index.php?route=quiz&id_question=1\' class=button_login_admin_user>Démarrer le Quiz</a>';
     }
     ?>
     <div id="queue">
