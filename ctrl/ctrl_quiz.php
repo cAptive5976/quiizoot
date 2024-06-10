@@ -1,6 +1,6 @@
 <?php
 
-
+//CE PROJET EST TROP DUR : MON CODE EST COMPLETEMENT FOIREUX -> ATTENTION LE CAHIER DES CHARGES NE SERA PAS RESPECTE
 
 //controleur d'affichage de la page avec les réponses à cocher
 function ctrl_vue_quiz($id_question, $id_utilisateur, $reponses) {
@@ -16,9 +16,9 @@ function ctrl_page_fin_quiz() {
 	vue_page_fin_quiz();
 }
 
-//controleur de l'affichage de la page d'attente de la question suivante 
+//controleur de l'affichage de la page d'attente de la question suivante : CETTE FONCTION NE SERA PAS UTILISEE CAR TROP DUR DE GERER LA TRANSITION PAR L'ADMIN
 
-function ctrl_vue_page_attente_question_suivante() {
+function ctrl_vue_page_attente_question_suivante() { //NON UTILISEE
 	require('vues/vue_quiz.php');
 	vue_page_attente_question_suivante();
 }
@@ -32,7 +32,7 @@ function ctrl_id_user($prenom, $nom, $classe) {
 	$id_utilisateur = recherche_id_utilisateur($prenom, $nom, $classe); //recherche de l'identifiant de l'utilisateur
 }
 
-<<<<<<< HEAD
+//<<<<<<< HEAD
 
 //
 //	Ici faire une requête SQL pour insérer le temps de réponse de l'élève
@@ -82,23 +82,23 @@ function recup_reponses_eleve($id_utilisateur, $id_question, $heureDebut) {
 	}
 }
 
-=======
->>>>>>> 4783acd8c486481c2c856c8f62591f7e881c0c20
+//=======
+//>>>>>>> 4783acd8c486481c2c856c8f62591f7e881c0c20
 //fonction qui à partir de l'identifiant de la question, si celui-ci est inférieur à 40, appelle la fonction d'affichage des réponses à cocher. Si l'id de question est supérieur à 40, affiche la page de fin de quiz. Au lancement du quiz, cette fonction serait exécutée avec l'id de question 1, puis avec un id augmenté de 1 à chaque question suivante jusqu'à la 40ème.
 function ctrl_quiz() {
 	
-	$id_question = $_GET['id_question']; //on récupère l'identifiant de la question depuis la route, ainsi que l'id utilisateur
-	$id_utilisateur = $_GET['id_user'];
-	$question_suivante = $_SESSION['question_suivante']; //ici on récupère un paramètre de session 'question suivante' qui sera true si l'administrateur envoie la page de la question suivante, pas sûr qu'il faut faire comme ça pour gérer le passage à la question suivante par l'admin
+	$id_question = intval($_GET['id_question']); //on récupère l'identifiant de la question depuis la route, ainsi que l'id utilisateur
+	$id_utilisateur = intval($_GET['id_user']);
+	//$question_suivante = $_SESSION['question_suivante']; //ici on récupère un paramètre de session 'question suivante' qui sera true si l'administrateur envoie la page de la question suivante, pas sûr qu'il faut faire comme ça pour gérer le passage à la question suivante par l'admin
 		
 	$question = recherche_question($c, $id_question);
 	$reponses = recherche_reponses($c, $id_question);
 	$bonnes_reponses = recherche_bonnes_reponses($c, $id_question);
 	
-	if ($question_suivante == true) {
-		if ($id_question >= 40) { //si l'admin passe à la question suivante, et que l'id de question est supérieur à 40, on affiche la fin du quiz
+	//if ($question_suivante == true) { //on n'utilise plus de paramètre qquestion_suivante, afin que les élèves passent à la question suivante sans l'admin, car c'est trop dur à faire
+		if ($id_question >= 35) { //si l'id de question est supérieur à 35, on affiche la fin du quiz
 			ctrl_page_fin_quiz();
-		} elseif ($id_question <= 40) { //si l'admin passe à la question suivante, mais que l'id de question est inférieur à 40, on affiche la question suivante
+		} elseif ($id_question <= 35) { //si l'id de question est inférieur à 35, on affiche la question suivante
 			$dateTimeDebut = new DateTime();
 			$heureDebut = $dateTimeDebut->date("Y-m-d H:i:s");
 			ctrl_vue_quiz($id_question, $id_utilisateur, $reponses);
@@ -106,9 +106,9 @@ function ctrl_quiz() {
 				recup_reponses_eleve($id_utilisateur, $id_question-1, $heureDebut); //comme ce controleur est appelé avec l'id de question suivante lorsque l'élève envoie ses réponse, afin de pouvoir enregistrer le temps de la réponse à la question à laquelle il vient de répondre, on enlève 1 à l'id de question
 			}
 			
-	} elseif ($question_suivante == false) { //sinon, on affiche la page d'attente de la question suivante
-		ctrl_vue_page_attente_question_suivante();
-	}
+	//} elseif ($question_suivante == false) { //sinon, on affiche la page d'attente de la question suivante
+	//	ctrl_vue_page_attente_question_suivante();
+	//}
 }
 }
 
