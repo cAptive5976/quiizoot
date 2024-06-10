@@ -30,7 +30,7 @@ ini_set('display_errors', 1);
 
         // Accès interdit users
         case 'menu_admin':
-            require('ctrl/ctrl_menu_admin.php');
+            require('vues/vues_admin/menu_admin.php');
             break;
         case 'scores' :
             require('ctrl/ctrl_scores.php');

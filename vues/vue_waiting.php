@@ -29,4 +29,3 @@ function show_waiting($queue) {
     require('blocs/footer.php');
 }
 ?>
-
