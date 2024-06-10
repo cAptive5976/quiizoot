@@ -1,8 +1,8 @@
 <?php
 
 session_start();
-if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'user' && $_SESSION['role'] !== 'admin') {
-    header('Location: index.php?route=login'); // Si pas connecter, envoit sur la page de connection
+if (!isset($_SESSION['role']) || ($_SESSION['role'] !== 'user' && $_SESSION['role'] !== 'admin')) {
+    header('Location: index.php?route=login'); // Si pas connecté, envoit sur la page de connexion
     exit();
 }
 function show_waiting($queue) {
@@ -11,6 +11,8 @@ function show_waiting($queue) {
     <?php
     if (!isset($_SESSION['role']) || $_SESSION['role'] == 'admin') {
      echo '<a href=\'index.php?route=menu_admin\' class=button_login_admin_user>Retour sur le menu admin</a>';
+    } else {
+     echo '<a href=\'index.php?route=quiz\' class=button_login_admin_user>Démarrer le Quiz</a>';
     }
     ?>
     <div id="queue">
@@ -20,7 +22,7 @@ function show_waiting($queue) {
         foreach ($queue as $user) {
             $queueHtml .= "<p class='joueur'><span class='prenom'>" . htmlspecialchars($user['prenom']) . "</span> " .
                           "<span class='nom'>" . htmlspecialchars($user['nom']) . "</span> " .
-                          "<span class='classe'>" . htmlspecialchars($user['classe']) . "</span></p>\n";
+                          "<span class='classe'>" . htmlspecialchars($user['classe']) . "</span></p>";
         }
         echo $queueHtml;
         ?>
