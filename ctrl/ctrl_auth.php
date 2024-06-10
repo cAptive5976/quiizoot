@@ -18,13 +18,13 @@ function login_user() {
         $user = find_user_by_name($c, $prenom, $nom, $classe); // On vérifie si l'utilisateur existe déja, car pas besoin de créé deux fois le même
 
         if ($user) {
-            $_SESSION['user'] = $user['prenom'] . ' ' . $user['nom'];
+            $_SESSION['user'] = $user['prenom'] . ' ' . $user['nom'] . ' ' . $user['classe'];
             $_SESSION['role'] = 'user';
             header('Location: index.php?route=waiting');
             exit;
         } else {
             login_user_crud($c, $prenom, $nom, $classe);
-            $_SESSION['user'] = $prenom . ' ' . $nom;
+            $_SESSION['user'] = $prenom . ' ' . $nom . ' ' . $classe;
             $_SESSION['role'] = 'user';
             header('Location: index.php?route=waiting');
             exit;
@@ -48,11 +48,12 @@ function login_admin() {
             $_SESSION['admin'] = true;
             $_SESSION['user'] = $admin['prenom'] . ' ' . $admin['nom'];
             $_SESSION['role'] = 'admin';
+            $_SESSION['green_alert'] = "Bienvenue " . $admin['prenom'];
             header('Location: index.php?route=menu_admin');
             exit;
         } else {
-            echo "<script>alert('Login ou mot de passe incorrect');</script>";
-            echo "<script>window.location.href = 'index.php?route=login_admin';</script>";
+            $_SESSION['red_alert'] = "Login ou mot de passe incorrect";
+            header('Location: index.php?route=login_admin');
             exit;
         }
     } else {

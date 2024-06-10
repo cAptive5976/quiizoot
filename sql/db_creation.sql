@@ -16,7 +16,7 @@ CREATE TABLE question (
     id int NOT NULL PRIMARY KEY auto_increment,
     enonce varchar(255),
     reponse_id int,
-    partie_id int,
+    isactive boolean,
     FOREIGN KEY (reponse_id) references reponse(id)
 );
 

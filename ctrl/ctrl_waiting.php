@@ -4,7 +4,8 @@ function get_queue() {
     $c = connection();
     require('crud/crud_functions.php');
     $queue = get_users($c);
+    $isactive = get_isactive($c);
     require('vues/vue_waiting.php');
-    show_waiting($queue);
+    show_waiting($queue, $isactive);
 }
 ?>

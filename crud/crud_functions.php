@@ -118,3 +118,32 @@ function recherche_bonnes_reponses($connex, $id_question) {
 		$res->closeCursor();
 		return $reponses;
 }
+
+//	Ici faire une requête SQL pour insérer le temps de réponse de l'élève
+
+function insertionTempsReponse($connex, $id_utilisateur, $id_question, $duree_reponse) {
+    $req = "INSERT INTO resultat (user_id, question_id, temps) VALUES (:id_utilisateur, :id_question, :duree_reponse)";
+    $res = $connex->prepare($req);
+    $res->bindParam(':id_utilisateur', $id_utilisateur, PDO::PARAM_STR);
+    $res->bindParam(':id_question', $id_question, PDO::PARAM_STR);
+    $res->bindParam(':duree_reponse', $duree_reponse, PDO::PARAM_STR);
+    $res->execute();
+}
+
+// Fonction pour précisé si le quiz est actif ou pas
+
+function set_active($connex) {
+    $req = "UPDATE question SET isactive = 1 WHERE isactive = 0";
+    $connex->query($req);
+}
+
+function set_inactive($connex) {
+    $req = "UPDATE question SET isactive = 0 WHERE isactive = 1";
+    $connex->query($req);
+}
+function get_isactive($connex) {
+    $req = "SELECT isactive FROM question LIMIT 1";
+    $res = $connex->query($req);
+    $result = $res->fetch(PDO::FETCH_ASSOC);
+    return $result ? (int)$result['isactive'] : null;
+}

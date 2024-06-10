@@ -2,6 +2,15 @@
 
 include('vues/blocs/header.php');
 
+if (isset($_SESSION['red_alert'])) {
+    echo '<div class="alert red_alert">' . $_SESSION['red_alert'] . '</div>';
+    unset($_SESSION['red_alert']);
+}
+if (isset($_SESSION['green_alert'])) {
+    echo '<div class="alert green_alert">' . $_SESSION['green_alert'] . '</div>';
+    unset($_SESSION['green_alert']);
+}
+
 echo '<form action="index.php?route=login_admin" method="post">';
 
     echo '<h3>Connexion admin</h3>';

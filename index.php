@@ -40,6 +40,14 @@ ini_set('display_errors', 1);
             require('ctrl/ctrl_cleaner.php');
             results_cleaner_ctrl();
             break;
+        case 'active_quiz':
+            require('ctrl/ctrl_manage_quiz.php');
+            active_quiz();
+            break;
+        case 'end_quiz':
+            require('ctrl/ctrl_manage_quiz.php');
+            end_quiz();
+            break;
 
         // Accès seulement après connection
         case 'waiting':
@@ -48,6 +56,7 @@ ini_set('display_errors', 1);
             break;
         case 'quiz':
             require('ctrl/ctrl_quiz.php');
+            ctrl_quiz();
             break;
         case 'logout':
             require('ctrl/ctrl_logout.php');

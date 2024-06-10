@@ -336,6 +336,41 @@ h1 {
     margin-bottom: 20px;
 }
 
+/*Message d'alerte non JavaScript, rouge -> alerte mauvaise, vert -> bonne alerte
+---------------------------------------------------*/
+
+.alert {
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    text-align: center;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: top 1.5s ease, opacity 1.5s ease;
+    opacity: 1;
+    animation: hideAlert 1.5s forwards;
+    animation-delay: 1.5s;
+}
+
+.green_alert {
+    background-color: #4CAF50;
+    color: white;
+    top: 20px;
+}
+
+.red_alert {
+    background-color: #f44336;
+    color: white;
+    top: 20px;
+}
+
+@keyframes hideAlert {
+    to {
+        top: 0;
+        opacity: 0;
+    }
+}
 
 /*Score table
 ---------------------------------------------------*/
