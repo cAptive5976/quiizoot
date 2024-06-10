@@ -312,6 +312,97 @@ h1 {
         background-position: 0% 50%;
     }
 }
+
+/*Quiz Page Styles
+---------------------------------------------------*/
+
+h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-top: 20px;
+    color: var(--text-color);
+    font-family: 'Kanit', sans-serif;
+}
+
+h1 {
+    text-align: center;
+    font-size: 1.25rem;
+    margin: 20px 0;
+    color: var(--text-color);
+    font-family: 'Open Sans', sans-serif;
+}
+
+.vue_form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px auto;
+    height: 460px;
+    width: 460px;
+    background-color: rgba(255, 255, 255, 0.13);
+    padding: 30px;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+}
+
+.vue_form fieldset {
+    border: none;
+    width: 100%;
+}
+
+.vue_form legend {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: var(--text-color);
+    font-family: 'Kanit', sans-serif;
+}
+
+.vue_form p {
+    margin: 10px 0;
+    font-size: 1em;
+    color: var(--text-color);
+    font-family: 'Open Sans', sans-serif;
+}
+
+.vue_form input[type="radio"] {
+    margin-left: 10px;
+    transform: scale(0.6);
+}
+
+.vue_form input[type="submit"] {
+    margin-top: 20px;
+    width: 100%;
+    background-color: #ffffff;
+    color: #080710;
+    padding: 10px 0;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-sizing: border-box;
+}
+
+.vue_form input[type="submit"]:hover {
+    background-color: var(--hover-color);
+}
+
+#quiz_finished {
+    display: block;
+    font-size: 75px;
+    text-align: center;
+    margin-top: 200px;
+    font-family: "Kanit", sans-serif;
+    animation: 2s anim-lineUp ease-out, 5s wave-gradient linear infinite;
+    background: white;
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
 /*File d'attente
 ---------------------------------------------------*/
 
