@@ -1,64 +1,38 @@
 <?php
 session_start();
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'user') {
-    header('Location: index.php?route=login_user'); // Si pas connecter, envoit sur la page de connection
+    header('Location: index.php?route=login_user'); // Si pas connecté, envoie sur la page de connexion
     exit();
 }
-//<<<<<<< HEAD
-function afficherCompteARebours($seconds) {
-    while ($seconds > 0) {
-        echo "<p>Il reste $seconds secondes.</p>";
-        sleep(1); // Attendre une seconde
-        $seconds--;
+
+function vue_reponses($id_question, $question, $reponses, $id_utilisateur) {
+    require('vues/blocs/header.php');
+
+    echo '<h2>QUIZZ</h2>';
+
+    echo '<h1>Question n° ' . $id_question . ' : ' . $question[0]['enonce'] . '</h1>'; // Affichage de la question à partir du tableau obtenu par la requête SQL
+
+    echo '<form action="index.php?route=quiz&id_user=' . $id_utilisateur . '&id_question=' . ($id_question + 1) . '" method="post">';
+    echo '<fieldset>
+            <legend>Choisir une réponse : </legend>';
+
+    foreach ($reponses as $rep) {
+        echo '<p>' . $rep['enonce_reponse'] . '<input type="radio" value="' . $rep['id'] . '" name="response" /></p>';
     }
-    echo "<p>Le temps est écoulé !</p>";
+
+    echo '<p><input type="submit" value="Valider" /></p></fieldset>
+          </form>';
+
+    require('vues/blocs/footer.php');
 }
-
-//=======
-
-//>>>>>>> 4783acd8c486481c2c856c8f62591f7e881c0c20
-function vue_reponses($id_question, $reponses, $id_utilisateur) {
-	require('vues/blocs/header.php');
-    
-	echo '<h2>QUIZZ</h2>';
-    
-	echo '<h1>Question n° ' . $id_question . ' : ' . $reponses[0]['question'] . '</h1>'; //Affichage de la question à partir du tableau obtenu par la requête SQL
-	
-	
-	echo '<form action="index.php?route=quiz&id_user="' . $id_utilisateur . '"id_question="' . $id_question + 1 . 'method="post">'; //quand le formulaire est validé (que l'élève a choisi ses réponses et cliqué sur valider), on envoit son identifiant (champ hidden) ainsi que ses réponses au ctrl_quiz qui les enverra au crud.
-	echo '		<fieldset>
-				<legend>Choisir une ou plusieurs réponses : </legend>';
-	
-	foreach ($reponses as $rep) {
-        echo '		<p>' . $rep['reponse'] . '<input type="checkbox" value="' . $rep['id_rep'] . '"name="' . $rep['id_rep']. '" /></p>';
-    }
-	
-	echo	'	<p><input type="submit" value="Valider" /></p></fieldset>
-			</form>';
-   
-   afficherCompteARebours(20);
-	
-	require('vues/blocs/footer.php');
-}
-
 
 function vue_page_fin_quiz() {
-	require('vues/blocs/header.php');
-    
-	echo '<h2>QUIZZ</h2>';
-   
-	echo '<p>Merci d\'avoir participé au quiz</p>';    
-   
-	require('vues/blocs/footer.php');
-   session_destroy();
-}
+    require('vues/blocs/header.php');
 
-function vue_attente_question_suivante() { //fonction NON UTILISEE CAR TROP DUR A FAIRE
-	require('vues/blocs/header.php');
-    
-	echo '<h2>QUIZZ</h2>';
-   
-	echo '<p>Merci de patienter, la question suivante s\'affichera lorsque tout le monde aura répondu, ou à la fin des 20 secondes.</p>';    
-   
-	require('vues/blocs/footer.php');
+    echo '<h2>QUIZZ</h2>';
+
+    echo '<p>Merci d\'avoir participé au quiz</p>';
+
+    require('vues/blocs/footer.php');
 }
+?>

@@ -78,9 +78,9 @@ function recherche_id_utilisateur($connex, $prenom, $nom, $classe) {
     $res->bindParam(':nom', $nom, PDO::PARAM_STR);
     $res->bindParam(':classe', $classe, PDO::PARAM_STR);
     $res->execute();
-    $id_utilisateur = $res->fetchAll(PDO::FETCH_ASSOC);
+    $id_utilisateur = $res->fetch(PDO::FETCH_ASSOC);
     $res->closeCursor();
-    return $id_utilisateur;
+    return $id_utilisateur['id'];
 }
 
 //fonction crud pour afficher toutes les réponses à cocher selon l'id de question
@@ -110,14 +110,16 @@ function recherche_question($connex, $id_question) {
 //fonction crud pour afficher les réponses correctes
 
 function recherche_bonnes_reponses($connex, $id_question) {
-		$req = "SELECT question.enonce AS question, reponse.enonce_reponse AS reponse, reponse.id AS id_rep FROM question INNER JOIN reponse ON question.reponse_id = reponse.id WHERE question.id = :id";
-		$res = $connex->prepare($req);
-		$res->bindParam(':id', $id_question, PDO::PARAM_STR);
-		$res->execute();
-		$reponses = $res->fetchAll(PDO::FETCH_ASSOC);
-		$res->closeCursor();
-		return $reponses;
+    $req = "SELECT reponse.id AS id_rep FROM question INNER JOIN reponse ON question.reponse_id = reponse.id WHERE question.id = :id";
+    $res = $connex->prepare($req);
+    $res->bindParam(':id', $id_question, PDO::PARAM_INT);
+    $res->execute();
+    $reponse = $res->fetch(PDO::FETCH_ASSOC);
+    $res->closeCursor();
+
+    return $reponse['id_rep'];
 }
+
 
 //	Ici faire une requête SQL pour insérer le temps de réponse de l'élève
 

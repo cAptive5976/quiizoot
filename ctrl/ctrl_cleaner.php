@@ -11,5 +11,5 @@ function results_cleaner_ctrl() {
     require('crud/crud_functions.php');
     results_cleaner($c);
     user_cleaner($c);
-    header('vues/vue_accueil.php');
+    header('Location: index.php?route=menu_admin');
 }

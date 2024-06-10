@@ -64,7 +64,7 @@ function display_scores($scores) {
     echo '<p>Total Points: ' . htmlspecialchars($best_classe_points) . '</p>';
     echo '</div>';
 
-    echo '<a href="index.php?route=menu_admin" class="bouton_scores">Fermer Quizz</a>';
+    echo '<a href="index.php?route=clean_results" class="bouton_scores">Fermer Quizz</a>';
     echo '</div>'; // Fermeture de la div container
 
     include 'vues/blocs/footer.php';
