@@ -1,14 +1,17 @@
 <?php
 
 session_start();
+
+// Vérification du rôle de l'utilisateur (doit être admin)
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-    header('Location: index.php?route=login_admin'); // Si pas admin, envoit sur la page de connection admin
+    // Redirection vers la page de connexion admin si l'utilisateur n'est pas admin
+    header('Location: index.php?route=login_admin');
     exit();
 }
 
 include 'vues/blocs/header.php';
 
-// Définition de la fonction display_scores
+// Définition de la fonction pour afficher les scores
 function display_scores($scores) {
     // Trier les scores pour obtenir les top 3
     usort($scores, function($a, $b) {
@@ -16,7 +19,7 @@ function display_scores($scores) {
     });
     $top_three = array_slice($scores, 0, 3);
 
-    // Calculer la meilleure classe
+    // Calculer la meilleure classe et le nombre total de points de la classe
     $classe_points = [];
     foreach ($scores as $score) {
         if (!isset($classe_points[$score['classe']])) {
@@ -28,12 +31,13 @@ function display_scores($scores) {
     $best_classe = key($classe_points);
     $best_classe_points = reset($classe_points);
 
+    // Affichage du podium des scores
     echo '<div class="container-encadre">';
     echo '<h1 class="main-title">Podium des Scores</h1>';
-    
     echo '<div class="podium">';
+
+    // Affichage des top 3 scores
     if (!empty($top_three)) {
-        
         if (isset($top_three[0])) {
             echo '<div class="podium-item first">';
             echo '<span class="podium-rank">1</span>';
@@ -56,17 +60,19 @@ function display_scores($scores) {
             echo '</div>';
         }
     }
-    echo '</div>';
+    echo '</div>'; // Fermeture de la div podium
 
-    // Afficher le rectangle avec la meilleure classe
+    // Affichage de la meilleure classe avec le nombre de points
     echo '<div class="best-classe">';
     echo '<h2>Meilleure Classe: ' . htmlspecialchars($best_classe) . '</h2>';
     echo '<p>Total Points: ' . htmlspecialchars($best_classe_points) . '</p>';
     echo '</div>';
 
+    // Boputon pour fermer le quiz
     echo '<a href="index.php?route=clean_results" class="bouton_scores">Fermer Quizz</a>';
     echo '</div>'; // Fermeture de la div container
 
     include 'vues/blocs/footer.php';
 }
 ?>
+
