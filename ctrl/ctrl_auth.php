@@ -1,10 +1,19 @@
 <?php
 session_start();
 
+
+// Fonction pour afficher la page de login.
+ 
 function login() {
     require('vues/vue_login.php');
 }
 
+
+// Cette fonction vérifie si une requête POST a été envoyée. Si oui, elle récupère les données
+// de login, vérifie si l'utilisateur existe déjà dans la base de données et, si c'est le cas,
+// crée une session pour l'utilisateur. Sinon, elle crée un nouvel utilisateur dans la base
+// de données, puis crée une session pour cet utilisateur.
+ 
 function login_user() {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $prenom = $_POST['prenom'];
@@ -15,7 +24,7 @@ function login_user() {
         $c = connection();
         require('crud/crud_functions.php');
 
-        $user = find_user_by_name($c, $prenom, $nom, $classe); // On vérifie si l'utilisateur existe déja, car pas besoin de créé deux fois le même
+        $user = find_user_by_name($c, $prenom, $nom, $classe); // On vérifie si l'utilisateur existe déjà
 
         if ($user) {
             $_SESSION['user'] = $user['prenom'] . ' ' . $user['nom'] . ' ' . $user['classe'];
@@ -33,6 +42,12 @@ function login_user() {
         require('vues/vues_user/auth_user.php');
     }
 }
+
+
+// Cette fonction vérifie si une requête POST a été envoyée. Si oui, elle récupère les données
+// de login, vérifie si l'administrateur existe et si le mot de passe est correct. Si c'est le
+// cas, elle crée une session pour l'administrateur. Sinon, elle renvoie une erreur de login.
+
 function login_admin() {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $prenom = $_POST['prenom'];
