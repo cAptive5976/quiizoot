@@ -1,7 +1,7 @@
 <?php
 require('blocs/header.php');
 
-echo "<span id=\"welcome\">Bienvenue sur Quizoot</span>
+echo "<span id=\"welcome\">Bienvenue sur Quiizoot</span>
 <span id=\"welcome-text\"> ";
 
 if (isset($_SESSION['role'])) {

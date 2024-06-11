@@ -1,5 +1,8 @@
 <?php
 
+/*
+Cette fonction permet charger le PDO pour la connexion a la base de données
+*/
 function connection() {
     require('config/config.php');
 

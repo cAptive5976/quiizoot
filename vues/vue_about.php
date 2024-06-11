@@ -4,7 +4,7 @@ require('blocs/header.php');
 echo "<h1> A propos du projet </h1>";
 
 echo "<p>
-Bienvenue sur Quizoot, un projet réalisé dans le cadre de la SAE203 en BUT1 Réseau et Télécommunication commitioné
+Bienvenue sur Quiizoot, un projet réalisé dans le cadre de la SAE203 en BUT1 Réseau et Télécommunication commitioné
 par les BUT1 Mesures Physique, nous allons vous proposer des quiz dans le thème des sciences et technologies
 </p>";
 
