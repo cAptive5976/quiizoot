@@ -37,18 +37,17 @@ ini_set('display_errors', 1);
             get_scores_by_class();
             break;
         case 'clean_results':
-            require('ctrl/ctrl_cleaner.php');
-            results_cleaner_ctrl();
+            require('ctrl/ctrl_cleaner.php'); // Inclut le contrôleur de nettoyage des résultats
+            results_cleaner_ctrl(); // Appelle la fonction pour nettoyer les résultats
             break;
         case 'active_quiz':
-            require('ctrl/ctrl_manage_quiz.php');
-            active_quiz();
+            require('ctrl/ctrl_manage_quiz.php'); // Inclut le contrôleur de gestion du quiz
+            active_quiz(); // Appelle la fonction pour activer le quiz
             break;
         case 'end_quiz':
-            require('ctrl/ctrl_manage_quiz.php');
-            end_quiz();
+            require('ctrl/ctrl_manage_quiz.php'); // Inclut le contrôleur de gestion du quiz
+            end_quiz(); // Appelle la fonction pour désactiver le quiz
             break;
-
         // Accès seulement après connection
         case 'waiting':
             require('ctrl/ctrl_waiting.php');

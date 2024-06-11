@@ -68,7 +68,7 @@ function display_scores($scores) {
     echo '<p>Total Points: ' . htmlspecialchars($best_classe_points) . '</p>';
     echo '</div>';
 
-    // Boputon pour fermer le quiz
+    // Génère un lien pour fermer le quiz et nettoyer les résultats
     echo '<a href="index.php?route=clean_results" class="bouton_scores">Fermer Quizz</a>';
     echo '</div>'; // Fermeture de la div container
 
