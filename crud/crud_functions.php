@@ -1,13 +1,12 @@
 <?php
 
-
 // Fonctions CRUD d'administration
 
 /*
 Cette fonction permet d'effacer toute la table resultat, cela est fait en fin de parties
 */
 function results_cleaner($connex) {
-    $req = "DELETE FROM resultat"; 
+    $req = "DELETE FROM resultat";
 
     $res = $connex->query($req);
     $res->closeCursor();
@@ -17,7 +16,7 @@ function results_cleaner($connex) {
 Cette fonction permet d'effacer toute la table utilisateurs non-admin après la fin de la partie comme results_cleaner
 */
 function user_cleaner($connex) {
-    $req = "DELETE FROM users WHERE isadmin=false"; 
+    $req = "DELETE FROM users WHERE isadmin=false";
 
     $res = $connex->query($req);
     $res->closeCursor();
@@ -26,7 +25,7 @@ function user_cleaner($connex) {
 /* 
 Cette fonction permet de recupéré les scores des joueurs et de la classe, 
 mais également de calculer le score avec une jointure interne sur les tables score et resultat
-*/ 
+*/
 function score_classe($connex) {
     $req = "SELECT u.prenom, u.nom, u.classe, sum(s.score) AS total_points
         FROM resultat r
@@ -42,14 +41,12 @@ function score_classe($connex) {
     return $score;
 }
 
-
-
 // Fonctions CRUD de login
 
 /*
 Cette fonction permet de sélectionné un utilisateur avec son prenom, nom et mot de passe et on vérifie si isadmin est en valeur true,
 si c'est le cas, c'est un admin, on renvoit donc l'admininstrateur dans la base de données avec son prenom, nom, et son mot de passe qui sera vérifié
-*/ 
+*/
 function login_admin_crud($connex, $prenom, $nom) {
     $req = "SELECT u.prenom, u.nom, u.isadmin, u.password FROM users u WHERE u.prenom = :prenom AND u.nom = :nom AND u.isadmin = true";
     $stmt = $connex->prepare($req);
@@ -74,7 +71,6 @@ function login_user_crud($connex, $prenom, $nom, $classe) {
     $res->bindParam(':classe', $classe, PDO::PARAM_STR);
     $res->execute();
 }
-
 
 /*
 Cette fonction permet de chercher l'utilisateur dans la base de donnée pour voir si il existe déja, si oui il est donc selectionné
@@ -108,7 +104,6 @@ function get_users($connex) {
 /*
 fonction pour trouver l'id utilisateur à partir du nom, du prénom et de la classe de l'élève :
 */
-
 function recherche_id_utilisateur($connex, $prenom, $nom, $classe) {
     $req = "SELECT u.id FROM users u WHERE u.prenom = :prenom AND u.nom = :nom AND u.classe = :classe";
     $res = $connex->prepare($req);
@@ -124,7 +119,6 @@ function recherche_id_utilisateur($connex, $prenom, $nom, $classe) {
 /*
 fonction crud pour afficher toutes les réponses à cocher selon l'id de question
 */
-
 function recherche_reponses($connex, $id_question) {
         $req = "SELECT id, enonce_reponse FROM reponse WHERE question_id = :id";
 	    $res = $connex->prepare($req);
@@ -138,7 +132,6 @@ function recherche_reponses($connex, $id_question) {
 /*
 fonction pour afficher lénoncé de la question a partir de son id
 */
-
 function recherche_question($connex, $id_question) {
 		$req = "SELECT id, enonce FROM question WHERE id = :id";
 		$res = $connex->prepare($req);
@@ -152,7 +145,6 @@ function recherche_question($connex, $id_question) {
 /*
 fonction crud pour afficher les réponses correctes
 */
-
 function recherche_bonnes_reponses($connex, $id_question) {
     $req = "SELECT reponse.id AS id_rep FROM question INNER JOIN reponse ON question.reponse_id = reponse.id WHERE question.id = :id";
     $res = $connex->prepare($req);
@@ -168,7 +160,6 @@ function recherche_bonnes_reponses($connex, $id_question) {
 /*
 Cette fonction permet d'inserer le temps de réponse du joueur, pour chaque questions (bien répondues) dans la table des résultats
 */
-
 function insertionTempsReponse($connex, $id_utilisateur, $id_question, $duree_reponse) {
     $req = "INSERT INTO resultat (user_id, question_id, temps) VALUES (:id_utilisateur, :id_question, :duree_reponse)";
     $res = $connex->prepare($req);
@@ -184,24 +175,20 @@ function insertionTempsReponse($connex, $id_utilisateur, $id_question, $duree_re
 Cette fonction active le quiz
 */
 function set_active($connex) {
-    $req = "UPDATE question SET isactive = 1 WHERE isactive = 0";
-    $connex->query($req);
+    $req = "UPDATE question SET isactive = 1 WHERE isactive = 0"; // Met à jour l'état des questions à actif
+    $connex->query($req); // Exécute la requête
 }
 
-/*
-Cette fonction désactive le quiz
-*/
+// Fonction pour désactiver le quiz
 function set_inactive($connex) {
-    $req = "UPDATE question SET isactive = 0 WHERE isactive = 1";
-    $connex->query($req);
+    $req = "UPDATE question SET isactive = 0 WHERE isactive = 1"; // Met à jour l'état des questions à inactif
+    $connex->query($req); // Exécute la requête
 }
 
-/*
-Cette fonction donne le status actuel du quiz
-*/
+// Fonction pour obtenir l'état actuel du quiz (actif ou inactif)
 function get_isactive($connex) {
-    $req = "SELECT isactive FROM question LIMIT 1";
-    $res = $connex->query($req);
-    $result = $res->fetch(PDO::FETCH_ASSOC);
-    return $result ? (int)$result['isactive'] : null;
+    $req = "SELECT isactive FROM question LIMIT 1"; // Sélectionne l'état actuel d'une question
+    $res = $connex->query($req); // Exécute la requête
+    $result = $res->fetch(PDO::FETCH_ASSOC); // Récupère le résultat
+    return $result ? (int)$result['isactive'] : null; // Retourne l'état ou null si non trouvé
 }
