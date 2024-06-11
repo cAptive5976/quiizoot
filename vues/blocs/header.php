@@ -14,14 +14,16 @@
 <header>
 	<div id="header">
         	<nav>
-        		<a href="index.php"><img src="images/Quiizoot!.png" alt="Logo de Quiizoot!" class="logo"></a>
+        		<a href="."><img src="images/Quiizoot!.png" alt="Logo de Quiizoot!" class="logo"></a>
         	     	<ul>
         	         	<li><a href="index.php?route=about">A PROPOS</a></li>
                         <?php
+						// Ici on démare une session, si le role n'est ni user ni admin, alors affiche le boutton de connexion
                         session_start();
                         if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'user' && $_SESSION['role'] !== 'admin') {
                             echo '<li><a href="index.php?route=login">SE CONNECTER</a></li>';
                         }
+						// Dans le cas contraire affiche le boutton de deconnexion, et le nom de l'utilisateur
                         else {
                             echo '<li><a href="index.php?route=logout">SE DECONNECTER</a></li>';
                             if (isset($_SESSION['user'])) {
