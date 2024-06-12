@@ -1,4 +1,4 @@
-<<?php
+<?php
 
 require('vues/blocs/header.php');
 
